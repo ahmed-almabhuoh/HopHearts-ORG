@@ -33,9 +33,14 @@ class WebsiteSettingsResource extends Resource
                             ->default('My Website')
                             ->label('Site Name'),
 
-                        Forms\Components\TextInput::make('site_logo')
+                            Forms\Components\FileUpload::make('site_logo')
+                            ->image()
+                            ->disk('public') // Store the file on the 'public' disk
+                            ->directory('logos') // Directory where the file will be stored
                             ->nullable()
+                            ->imageEditor()
                             ->label('Site Logo'),
+
 
                         Forms\Components\TextInput::make('contact_email')
                             ->nullable()
@@ -87,6 +92,10 @@ class WebsiteSettingsResource extends Resource
         return $table
             ->columns([
                 //
+                Tables\Columns\ImageColumn::make('site_logo')
+                    ->disk('public') // Make sure 'public' disk is used
+                    ->label('Site Logo'),
+
                 Tables\Columns\TextColumn::make('site_name')
                     ->sortable()
                     ->searchable()
