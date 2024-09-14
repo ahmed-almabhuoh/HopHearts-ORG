@@ -50,7 +50,7 @@
     <!-- Blog Content Section -->
     <main class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
         <div class="bg-white p-8 shadow-lg rounded-lg border-custom">
-            <img class="w-full h-64 object-cover mb-8 rounded-lg" src="{{ Storage::url($blog->image) }}"
+            <img class="w-full h-auto mb-8 rounded-lg" src="{{ Storage::url($blog->image) }}"
                 alt="{{ $blog->title }}">
 
             <!-- Blog Content -->
