@@ -270,11 +270,11 @@
                 @foreach ($projects as $project)
                     <div class="bg-white p-6 rounded-lg shadow-lg">
                         <img class="w-full h-48 object-cover rounded-lg mb-4"
-                            src="{{ Storage::url($project->image) }}" alt="{{ $project->name_ar }}">
-                        <h3 class="text-xl font-semibold text-[#8B4000]">{{ $project->name_ar }}</h3>
+                            src="{{ Storage::url($project->image) }}" alt="{{ $project->name_en }}">
+                        <h3 class="text-xl font-semibold text-[#8B4000]">{{ $project->name_en }}</h3>
 
                         <p class="mt-2 text-base text-[#6F4F28]">
-                            {!! \Illuminate\Support\Str::limit((new Parsedown())->text($project->description_ar), 250, '...') !!}
+                            {!! \Illuminate\Support\Str::limit((new Parsedown())->text($project->description_en), 250, '...') !!}
                         </p>
 
                         <a href="{{ $project->link }}" target="_blank"
