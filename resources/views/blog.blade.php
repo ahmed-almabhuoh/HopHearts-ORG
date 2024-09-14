@@ -55,7 +55,7 @@
 
             <!-- Blog Content -->
             <div class="prose max-w-none text-custom" style="color: black !important;">
-                {!! $blog->content !!} <!-- Converting markdown to HTML -->
+                {!! Str::markdown($blog->content) !!} <!-- Converting markdown to HTML -->
             </div>
 
             <!-- Blog Stats -->

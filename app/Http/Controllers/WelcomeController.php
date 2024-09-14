@@ -30,11 +30,11 @@ class WelcomeController extends Controller
         $blog->views++;
         $blog->save();
 
-           // Initialize the CommonMark converter
-           $converter = new CommonMarkConverter();
+        //    // Initialize the CommonMark converter
+        //    $converter = new CommonMarkConverter();
 
-           // Convert Markdown to HTML
-           $blog->content = $converter->convertToHtml($blog->content);
+        //    // Convert Markdown to HTML
+        //    $blog->content = $converter->convertToHtml($blog->content);
 
         return response()->view('blog', [
             'blog' => $blog
