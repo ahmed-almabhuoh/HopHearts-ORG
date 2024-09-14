@@ -30,6 +30,7 @@ class WelcomeController extends Controller
         $blog->views++;
         $blog->save();
 
+        $blog->content = $this->parseMarkdown($blog->content);
         //    // Initialize the CommonMark converter
         //    $converter = new CommonMarkConverter();
 
@@ -85,5 +86,24 @@ class WelcomeController extends Controller
         $comment->save();
 
         return redirect()->route('blogs.pages.view', $blog->slug);
+    }
+
+    protected function parseMarkdown($text)
+    {
+        $replacements = [
+            '/\*\*(.*?)\*\*/' => '<strong>$1</strong>',  // Bold
+            '/\*(.*?)\*/' => '<em>$1</em>',  // Italic
+            '/\# (.*?)\n/' => '<h1>$1</h1>', // Heading 1
+            '/\## (.*?)\n/' => '<h2>$1</h2>', // Heading 2
+            '/\### (.*?)\n/' => '<h3>$1</h3>', // Heading 3
+            '/\[(.*?)\]\((.*?)\)/' => '<a href="$2">$1</a>', // Links
+            '/\n/' => '<br>', // Line breaks
+        ];
+
+        foreach ($replacements as $pattern => $replacement) {
+            $text = preg_replace($pattern, $replacement, $text);
+        }
+
+        return $text;
     }
 }
