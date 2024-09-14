@@ -11,6 +11,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Support\Markdown;
 use Filament\Tables;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Builder;
@@ -88,6 +89,9 @@ class BlogResource extends Resource
                     ->label('Author')
                     ->sortable()
                     ->searchable(),
+
+                TextColumn::make('content'),
+
                 Tables\Columns\TextColumn::make('status')
                     ->sortable()
                     ->searchable(),
