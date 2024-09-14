@@ -90,7 +90,9 @@ class BlogResource extends Resource
                     ->sortable()
                     ->searchable(),
 
-                TextColumn::make('content'),
+                TextColumn::make('content')
+                ->html()
+                ->markdown(),
 
                 Tables\Columns\TextColumn::make('status')
                     ->sortable()
