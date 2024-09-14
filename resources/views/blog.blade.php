@@ -28,8 +28,6 @@
 
 <body class="bg-custom-bg">
 
-    <h1>Header</h1>
-
     <!-- Blog Header -->
     <header class="bg-white shadow-md border-custom">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

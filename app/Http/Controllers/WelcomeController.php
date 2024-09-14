@@ -95,9 +95,9 @@ class WelcomeController extends Controller
         $replacements = [
             '/\*\*(.*?)\*\*/' => '<strong>$1</strong>',  // Bold
             '/\*(.*?)\*/' => '<em>$1</em>',  // Italic
-            '/\#\#\# (.*?)\n/' => '<h3>$1</h3>', // Heading 3
-            '/\#\# (.*?)\n/' => '<h2>$1</h2>', // Heading 2
-            '/\# (.*?)\n/' => '<h1>$1</h1>', // Heading 1
+            '/\#\#\# (.*?)\n/' => '<h3 class="text-2xl font-bold text-custom">$1</h3>', // Heading 3
+            '/\#\# (.*?)\n/' => '<h2 class="text-3xl font-bold text-custom">$1</h2>', // Heading 2
+            '/\# (.*?)\n/' => '<h1 class="text-4xl font-bold text-custom">$1</h1>', // Heading 1
             '/`([^`]*)`/' => '<code>$1</code>', // Inline code
             '/```(.*?)```/s' => '<pre><code>$1</code></pre>', // Block code
             '/\n\*\s(.*?)\n/' => '<ul><li>$1</li></ul>', // Unordered list
