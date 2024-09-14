@@ -54,7 +54,7 @@
                 alt="{{ $blog->title }}">
 
             <!-- Blog Content -->
-            <div class="prose max-w-none text-custom">
+            <div class="prose max-w-none text-custom" style="color: black !important;">
                 {!! $blog->content !!} <!-- Converting markdown to HTML -->
             </div>
 
