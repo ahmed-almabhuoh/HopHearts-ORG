@@ -31,6 +31,8 @@ class WelcomeController extends Controller
         $blog->save();
 
         $blog->content = $this->parseMarkdown($blog->content);
+
+        dd($blog->content);
         //    // Initialize the CommonMark converter
         //    $converter = new CommonMarkConverter();
 
