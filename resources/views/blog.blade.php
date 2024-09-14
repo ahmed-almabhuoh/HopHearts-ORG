@@ -55,7 +55,7 @@
 
             <!-- Blog Content -->
             <div class="prose max-w-none text-custom">
-                {{ $blog->content }} <!-- Converting markdown to HTML -->
+                {!! $blog->content !!} <!-- Converting markdown to HTML -->
             </div>
 
             <!-- Blog Stats -->
