@@ -89,28 +89,24 @@ class WelcomeController extends Controller
         return redirect()->route('blogs.pages.view', $blog->slug);
     }
 
-    protected function parseMarkdown($text)
-    {
-        // Define replacements for various Markdown elements
+    protected function parseMarkdown($text) {
         $replacements = [
             '/\*\*(.*?)\*\*/' => '<strong>$1</strong>',  // Bold
             '/\*(.*?)\*/' => '<em>$1</em>',  // Italic
             '/\#\#\# (.*?)\n/' => '<h3 class="text-2xl font-bold text-custom">$1</h3>', // Heading 3
             '/\#\# (.*?)\n/' => '<h2 class="text-3xl font-bold text-custom">$1</h2>', // Heading 2
             '/\# (.*?)\n/' => '<h1 class="text-4xl font-bold text-custom">$1</h1>', // Heading 1
-            '/`([^`]*)`/' => '<code>$1</code>', // Inline code
-            '/```(.*?)```/s' => '<pre><code>$1</code></pre>', // Block code
-            '/\n\*\s(.*?)\n/' => '<ul><li>$1</li></ul>', // Unordered list
-            '/\[(.*?)\]\((.*?)\)/' => '<a href="$2">$1</a>', // Links
+            '/`([^`]*)`/' => '<code class="bg-gray-100 p-1 rounded">$1</code>', // Inline code
+            '/```(.*?)```/s' => '<pre class="bg-gray-900 text-white p-3 rounded-md overflow-auto"><code>$1</code></pre>', // Block code
+            '/\n\*\s(.*?)\n/' => '<ul class="list-disc pl-6"><li>$1</li></ul>', // Unordered list
+            '/\[(.*?)\]\((.*?)\)/' => '<a href="$2" class="text-blue-500 underline">$1</a>', // Links
             '/\n/' => '<br>', // Line breaks (for simple cases)
         ];
 
-        // Apply all replacements
         foreach ($replacements as $pattern => $replacement) {
             $text = preg_replace($pattern, $replacement, $text);
         }
 
-        // Return the parsed Markdown as HTML
         return $text;
     }
 }
