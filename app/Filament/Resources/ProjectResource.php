@@ -3,13 +3,13 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProjectResource\Pages;
-use App\Filament\Resources\ProjectResource\RelationManagers;
 use App\Models\Project;
 use Filament\Forms;
-use Filament\Forms\Form;
+use Filament\Forms\Components\FileUpload;
 use Filament\Resources\Resource;
 use Filament\Tables;
-use Filament\Tables\Filters\Filter;
+use Filament\Forms\Form;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Table;
 
 class ProjectResource extends Resource
@@ -43,6 +43,14 @@ class ProjectResource extends Resource
                             ])
                             ->default('pending')
                             ->label('Status'),
+
+                        // Single media upload for project (image only)
+                        FileUpload::make('image')
+                            ->label('Upload Project Image')
+                            ->image() // For images only
+                            ->editableSvgs()
+                            ->imageEditor()
+                            ->columnSpan('full'),
                     ]),
 
                 Forms\Components\Section::make('Project Dates')
@@ -81,6 +89,10 @@ class ProjectResource extends Resource
                     ->searchable()
                     ->label('Project Name'),
 
+                // Display a single image for the project media
+                // Tables\Columns\ImageColumn::make('media.first.url')->label('Project Image'),
+                ImageColumn::make('image'),
+
                 Tables\Columns\TextColumn::make('description')
                     ->limit(50)
                     ->label('Description'),
@@ -97,7 +109,7 @@ class ProjectResource extends Resource
                     ->date()
                     ->label('End Date'),
 
-                Tables\Columns\TextColumn::make('user.name') // Adjust 'user.name' based on your relationship
+                Tables\Columns\TextColumn::make('user.name')
                     ->label('Assigned User'),
 
                 Tables\Columns\TextColumn::make('budget')
