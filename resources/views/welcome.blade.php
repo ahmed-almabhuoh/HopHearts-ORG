@@ -15,7 +15,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="#" class="flex items-center">
-                        <img class="h-16" src="{{Storage::url(App\Models\WebsiteSettings::first()->site_logo)}}" alt="Hop Hearts Logo">
+                        <img class="h-16" src="{{ Storage::url(App\Models\WebsiteSettings::first()->site_logo) }}"
+                            alt="Hop Hearts Logo">
                         <!-- <span class="ml-2 text-[#8B4000] text-2xl font-bold">Hop Hearts</span> -->
                     </a>
                 </div>
@@ -56,7 +57,8 @@
             <div class="bg-[#FFE4B5] shadow-lg ring-1 ring-black ring-opacity-5 rounded-lg">
                 <div class="px-5 pt-4 flex items-center justify-between">
                     <div>
-                        <img class="h-8" src="/path/to/logo.png" alt="Hop Hearts Logo">
+                        <img class="h-8" src="{{ Storage::url(App\Models\WebsiteSettings::first()->site_logo) }}"
+                            alt="Hop Hearts Logo">
                     </div>
                     <button type="button"
                         class="inline-flex items-center justify-center p-2 text-[#8B4000] hover:text-[#FF6F61] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#FF6F61]"
@@ -89,68 +91,54 @@
     <section id="about" class="py-20 bg-[#FFE4B5]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl">About Us</h2>
+                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl"> {{ __('About Us') }} </h2>
                 <p class="mt-4 text-lg text-[#8B4000]">
-                    At Hop Hearts, we are dedicated to delivering cutting-edge technology products that make a
-                    difference. Our
-                    mission is to provide innovative solutions tailored to meet the needs of our diverse clientele.
+                    {{ __('At Hop Hearts, we are dedicated to delivering cutting-edge technology products that make a difference. Our mission is to provide innovative solutions tailored to meet the needs of our diverse clientele.') }}
                 </p>
             </div>
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Mission Statement -->
                 <div class="relative bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-[#FF6F61]">Our Mission</h3>
+                    <h3 class="text-2xl font-bold text-[#FF6F61]"> {{ __('Our Mission') }} </h3>
                     <p class="mt-4 text-base text-[#6F4F28]">
-                        Our mission is to drive technological innovation and deliver high-quality products that empower
-                        businesses
-                        and individuals to achieve their goals. We strive to create value through excellence and
-                        creativity.
+                        {{ __('Our mission is to drive technological innovation and deliver high-quality products that empower businesses and individuals to achieve their goals. We strive to create value through excellence and creativity.') }}
                     </p>
                 </div>
 
                 <!-- Vision Statement -->
                 <div class="relative bg-white p-8 rounded-lg shadow-lg">
-                    <h3 class="text-2xl font-bold text-[#FF6F61]">Our Vision</h3>
+                    <h3 class="text-2xl font-bold text-[#FF6F61]"> {{ __('Our Vision') }} </h3>
                     <p class="mt-4 text-base text-[#6F4F28]">
-                        We envision a world where technology seamlessly integrates into everyday life, enhancing
-                        efficiency and
-                        connectivity. Our vision is to be at the forefront of this transformation, setting new standards
-                        in the tech
-                        industry.
+                        {{ __('We envision a world where technology seamlessly integrates into everyday life, enhancing efficiency and connectivity. Our vision is to be at the forefront of this transformation, setting new standards in the tech industry.') }}
                     </p>
                 </div>
             </div>
 
             <div class="mt-12 text-center">
-                <h3 class="text-2xl font-bold text-[#FF6F61]">Our Values</h3>
+                <h3 class="text-2xl font-bold text-[#FF6F61]"> {{ __('Our Values') }} </h3>
                 <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Value 1 -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="text-xl font-semibold text-[#8B4000]">Innovation</h4>
+                        <h4 class="text-xl font-semibold text-[#8B4000]"> {{ __('Innovation') }} </h4>
                         <p class="mt-2 text-base text-[#6F4F28]">
-                            We are committed to pushing the boundaries of technology, constantly exploring new ideas and
-                            solutions.
+                            {{ __('We are committed to pushing the boundaries of technology, constantly exploring new ideas and solutions.') }}
                         </p>
                     </div>
 
                     <!-- Value 2 -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="text-xl font-semibold text-[#8B4000]">Integrity</h4>
+                        <h4 class="text-xl font-semibold text-[#8B4000]">{{ __('Integrity') }}</h4>
                         <p class="mt-2 text-base text-[#6F4F28]">
-                            We uphold the highest standards of honesty and transparency in all our interactions and
-                            business
-                            practices.
+                            {{ __('We uphold the highest standards of honesty and transparency in all our interactions and business practices.') }}
                         </p>
                     </div>
 
                     <!-- Value 3 -->
                     <div class="bg-white p-6 rounded-lg shadow-md">
-                        <h4 class="text-xl font-semibold text-[#8B4000]">Customer Focus</h4>
+                        <h4 class="text-xl font-semibold text-[#8B4000]">{{ __('Customer Focus') }}</h4>
                         <p class="mt-2 text-base text-[#6F4F28]">
-                            Our customers are at the heart of everything we do. We are dedicated to understanding and
-                            meeting their
-                            needs.
+                            {{ __('Our customers are at the heart of everything we do. We are dedicated to understanding and meeting their needs.') }}
                         </p>
                     </div>
                 </div>
@@ -162,11 +150,10 @@
     <section id="services" class="py-16 bg-[#FFF5E1]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl">Our Services</h2>
+                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl"> {{ __('Our Services') }} </h2>
                 <p class="mt-4 text-lg text-[#6F4F28]">
-                    We offer a range of technology products and services designed to meet the needs of businesses and
-                    individuals.
-                    Explore our services to see how we can help you achieve your goals.
+                    {{ __('We offer a range of technology products and services designed to meet the needs of businesses and individuals.') }}
+                    {{ __('Explore our services to see how we can help you achieve your goals.') }}
                 </p>
             </div>
 
@@ -180,9 +167,9 @@
                                 d="M12 6v6l4 2m-8 0l4-2V6" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-[#8B4000]">Custom Software Development</h3>
+                    <h3 class="text-xl font-semibold text-[#8B4000]"> {{ __('Custom Software Development') }} </h3>
                     <p class="mt-2 text-base text-[#6F4F28]">
-                        Tailor-made software solutions designed to meet your unique business needs and objectives.
+                        {{ __('Tailor-made software solutions designed to meet your unique business needs and objectives.') }}
                     </p>
                 </div>
 
@@ -195,9 +182,9 @@
                                 d="M4 7v11a1 1 0 001 1h14a1 1 0 001-1V7l-7 4-7-4z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-[#8B4000]">Web Development</h3>
+                    <h3 class="text-xl font-semibold text-[#8B4000]"> {{ __('Web Development') }} </h3>
                     <p class="mt-2 text-base text-[#6F4F28]">
-                        Creating responsive and user-friendly websites that enhance your online presence and engagement.
+                        {{ __('Creating responsive and user-friendly websites that enhance your online presence and engagement.') }}
                     </p>
                 </div>
 
@@ -210,10 +197,9 @@
                                 d="M3 12l2-2m0 0l2-2m-2 2h12m-12 0l2 2m0 0l2 2M5 10h14m-7-7v14" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-[#8B4000]">Mobile App Development</h3>
+                    <h3 class="text-xl font-semibold text-[#8B4000]"> {{ __('Mobile App Development') }} </h3>
                     <p class="mt-2 text-base text-[#6F4F28]">
-                        Developing intuitive and high-performance mobile applications for both iOS and Android
-                        platforms.
+                        {{ __('Developing intuitive and high-performance mobile applications for both iOS and Android platforms.') }}
                     </p>
                 </div>
 
@@ -226,9 +212,9 @@
                                 d="M7 7h10M7 12h10m-5 5h5" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-[#8B4000]">Cloud Solutions</h3>
+                    <h3 class="text-xl font-semibold text-[#8B4000]">{{ __('Cloud Solutions') }}</h3>
                     <p class="mt-2 text-base text-[#6F4F28]">
-                        Offering scalable cloud solutions that enhance efficiency, flexibility, and data management.
+                        {{ __('Offering scalable cloud solutions that enhance efficiency, flexibility, and data management.') }}
                     </p>
                 </div>
 
@@ -241,10 +227,9 @@
                                 d="M12 8V4m0 0v4m0 0H8m4 0h4m0 8v4m0-4v4m-4-4H8m4 0h4" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-[#8B4000]">IT Consulting</h3>
+                    <h3 class="text-xl font-semibold text-[#8B4000]"> {{ __('IT Consulting') }} </h3>
                     <p class="mt-2 text-base text-[#6F4F28]">
-                        Expert advice and strategies to optimize your IT infrastructure and achieve your technology
-                        goals.
+                        {{ __('Expert advice and strategies to optimize your IT infrastructure and achieve your technology goals.') }}
                     </p>
                 </div>
 
@@ -257,9 +242,9 @@
                                 d="M12 4V2m0 20v-2m-7-5h2m12 0h2m-2-7v12m-4 0V6m-4 0v12" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-[#8B4000]">Cybersecurity</h3>
+                    <h3 class="text-xl font-semibold text-[#8B4000]">{{ __('Cybersecurity') }}</h3>
                     <p class="mt-2 text-base text-[#6F4F28]">
-                        Comprehensive cybersecurity solutions to protect your digital assets and ensure data privacy.
+                        {{ __('Comprehensive cybersecurity solutions to protect your digital assets and ensure data privacy.') }}
                     </p>
                 </div>
             </div>
@@ -270,11 +255,10 @@
     <section id="products" class="py-16 bg-[#FFE4B5]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl">Our Products</h2>
+                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl">{{ __('Our Products') }}</h2>
                 <p class="mt-4 text-lg text-[#6F4F28]">
-                    Discover our range of innovative technology products designed to enhance your business and everyday
-                    life. Each
-                    product is crafted with precision to meet your needs and exceed your expectations.
+                    {{ __('Discover our range of innovative technology products designed to enhance your business and everyday life.') }}
+                    {{ __('Each product is crafted with precision to meet your needs and exceed your expectations.') }}
                 </p>
             </div>
 
@@ -341,33 +325,34 @@
     <section id="contact" class="py-16 bg-[#F4F1F1]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-[#4A4A4A] sm:text-4xl">Contact Us</h2>
+                <h2 class="text-3xl font-extrabold text-[#4A4A4A] sm:text-4xl">{{ __('Contact Us') }}</h2>
                 <p class="mt-4 text-lg text-[#6D6D6D]">
-                    We’d love to hear from you. Whether you have questions, feedback, or just want to connect, please
-                    reach out
-                    using the contact form or the details below.
+                    {{ __('We’d love to hear from you. Whether you have questions, feedback, or just want to connect, please reach out using the contact form or the details below.') }}
                 </p>
             </div>
 
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12">
                 <!-- Contact Form -->
                 <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-[#4A4A4A]">Send Us a Message</h3>
+                    <h3 class="text-2xl font-semibold text-[#4A4A4A]">{{ __('Send Us a Message') }}</h3>
                     <form action="#" method="POST" class="mt-6 space-y-4">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-[#6D6D6D]">Name</label>
+                            <label for="name"
+                                class="block text-sm font-medium text-[#6D6D6D]">{{ __('Name') }}</label>
                             <input type="text" id="name" name="name" required
                                 class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-[#FF6F61] focus:ring focus:ring-[#FF6F61] focus:ring-opacity-50 sm:text-sm" />
                         </div>
 
                         <div>
-                            <label for="email" class="block text-sm font-medium text-[#6D6D6D]">Email</label>
+                            <label for="email"
+                                class="block text-sm font-medium text-[#6D6D6D]">{{ __('Email') }}</label>
                             <input type="email" id="email" name="email" required
                                 class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-[#FF6F61] focus:ring focus:ring-[#FF6F61] focus:ring-opacity-50 sm:text-sm" />
                         </div>
 
                         <div>
-                            <label for="message" class="block text-sm font-medium text-[#6D6D6D]">Message</label>
+                            <label for="message"
+                                class="block text-sm font-medium text-[#6D6D6D]">{{ __('Message') }}</label>
                             <textarea id="message" name="message" rows="4" required
                                 class="mt-1 block w-full border-gray-300 rounded-lg shadow-sm focus:border-[#FF6F61] focus:ring focus:ring-[#FF6F61] focus:ring-opacity-50 sm:text-sm"></textarea>
                         </div>
@@ -380,7 +365,7 @@
 
                 <!-- Contact Details -->
                 <div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-                    <h3 class="text-2xl font-semibold text-[#4A4A4A]">Contact Information</h3>
+                    <h3 class="text-2xl font-semibold text-[#4A4A4A]">{{ __('Contact Information') }}</h3>
                     <ul class="mt-6 space-y-4">
                         <li class="flex items-center text-[#6D6D6D]">
                             <img class="w-6 h-6 mr-3" src="https://cdn-icons-png.flaticon.com/512/194/194931.png"
@@ -409,7 +394,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- About Section -->
                 <div>
-                    <h3 class="text-xl font-semibold mb-4">About Us</h3>
+                    <h3 class="text-xl font-semibold mb-4">{{ __('About Us') }}</h3>
                     <p class="text-sm">
                         Hop Hearts is dedicated to delivering cutting-edge technology products with a focus on
                         innovation and
@@ -476,7 +461,6 @@
             </div>
         </div>
     </footer>
-
 
 </body>
 
