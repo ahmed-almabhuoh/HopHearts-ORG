@@ -6,6 +6,7 @@ use App\Filament\Resources\ProjectResource\Pages;
 use App\Models\Project;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\MarkdownEditor;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Forms\Form;
@@ -26,14 +27,31 @@ class ProjectResource extends Resource
             ->schema([
                 Forms\Components\Section::make('Project Details')
                     ->schema([
-                        Forms\Components\TextInput::make('name')
+                        Forms\Components\TextInput::make('name_ar')
                             ->required()
                             ->maxLength(255)
-                            ->label('Project Name'),
+                            ->helperText('AR for Arabic language')
+                            ->label('Project Name AR'),
 
-                        Forms\Components\Textarea::make('description')
-                            ->nullable()
-                            ->label('Description'),
+                        Forms\Components\TextInput::make('name_en')
+                            ->required()
+                            ->maxLength(255)
+                            ->helperText('EN for Arabic language')
+                            ->label('Project Name EN'),
+
+
+                        MarkdownEditor::make('description_ar')
+                            ->helperText('AR for Arabic language')
+                            ->label('Description AR'),
+
+                        MarkdownEditor::make('description_en')
+                            ->helperText('EN for Arabic language')
+                            ->label('Description EN'),
+
+                        Forms\Components\TextInput::make('link')
+                            // ->required()
+                            ->maxLength(255)
+                            ->label('Project Link'),
 
                         Forms\Components\Select::make('status')
                             ->options([
@@ -47,7 +65,6 @@ class ProjectResource extends Resource
                         // Single media upload for project (image only)
                         FileUpload::make('image')
                             ->label('Upload Project Image')
-                            ->image() // For images only
                             ->editableSvgs()
                             ->imageEditor()
                             ->columnSpan('full'),
@@ -84,18 +101,18 @@ class ProjectResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name')
+                Tables\Columns\TextColumn::make('name_en')
                     ->sortable()
                     ->searchable()
-                    ->label('Project Name'),
+                    ->label('Project Name EN'),
 
                 // Display a single image for the project media
                 // Tables\Columns\ImageColumn::make('media.first.url')->label('Project Image'),
                 ImageColumn::make('image'),
 
-                Tables\Columns\TextColumn::make('description')
+                Tables\Columns\TextColumn::make('description_en')
                     ->limit(50)
-                    ->label('Description'),
+                    ->label('Description_ EN'),
 
                 Tables\Columns\TextColumn::make('status')
                     ->sortable()
