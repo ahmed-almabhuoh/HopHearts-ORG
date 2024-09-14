@@ -6,6 +6,7 @@ use App\Models\Blog;
 use App\Models\BlogComment;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use League\CommonMark\CommonMarkConverter;
 
 class WelcomeController extends Controller
 {
@@ -28,6 +29,12 @@ class WelcomeController extends Controller
 
         $blog->views++;
         $blog->save();
+
+           // Initialize the CommonMark converter
+           $converter = new CommonMarkConverter();
+
+           // Convert Markdown to HTML
+           $blog->content = $converter->convertToHtml($blog->content);
 
         return response()->view('blog', [
             'blog' => $blog
