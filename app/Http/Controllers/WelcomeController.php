@@ -90,26 +90,20 @@ class WelcomeController extends Controller
 
     protected function parseMarkdown($text)
     {
-        // Define replacements for various Markdown elements
         $replacements = [
-            '/\*\*(.*?)\*\*/' => '<strong>$1</strong>',  // Bold
-            '/\*(.*?)\*/' => '<em>$1</em>',  // Italic
-            '/\#\#\# (.*?)\n/' => '<h3>$1</h3>', // Heading 3
-            '/\#\# (.*?)\n/' => '<h2>$1</h2>', // Heading 2
-            '/\# (.*?)\n/' => '<h1>$1</h1>', // Heading 1
-            '/`([^`]*)`/' => '<code>$1</code>', // Inline code
-            '/```(.*?)```/s' => '<pre><code>$1</code></pre>', // Block code
-            '/\n\*\s(.*?)\n/' => '<ul><li>$1</li></ul>', // Unordered list
+            '/\#\s*(.*?)\n/' => '<h1>$1</h1>', // Heading 1 (allows numbers or text after the #)
+            '/\#\#\s*(.*?)\n/' => '<h2>$1</h2>', // Heading 2 (allows numbers or text after the ##)
+            '/\#\#\#\s*(.*?)\n/' => '<h3>$1</h3>', // Heading 3 (allows numbers or text after the ###)
+            '/\*\*(.*?)\*\*/' => '<strong>$1</strong>', // Bold
+            '/\*(.*?)\*/' => '<em>$1</em>', // Italic
             '/\[(.*?)\]\((.*?)\)/' => '<a href="$2">$1</a>', // Links
-            '/\n/' => '<br>', // Line breaks (for simple cases)
+            '/\n/' => '<br>', // Line breaks
         ];
 
-        // Apply all replacements
         foreach ($replacements as $pattern => $replacement) {
             $text = preg_replace($pattern, $replacement, $text);
         }
 
-        // Return the parsed Markdown as HTML
         return $text;
     }
 }
