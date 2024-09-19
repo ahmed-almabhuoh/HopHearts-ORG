@@ -93,7 +93,7 @@ class BlogResource extends Resource
                 TextColumn::make('content')
                 // ->html()
                 // ->markdown()
-                ->formatStateUsing(fn($record) => str_limit(strip_tags($record->description_en), 250) ),
+                ->formatStateUsing(fn($record) =>   Str::limit($record->description_en, 100, '...')),
 
                 Tables\Columns\TextColumn::make('status')
                     ->sortable()
