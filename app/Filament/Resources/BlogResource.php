@@ -91,8 +91,12 @@ class BlogResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('content')
-                    ->markdown()
-                    ->formatStateUsing(fn($record) => Str::limit($record->description_en, 100, '...')),
+                    ->html() // or markdown() based on your needs
+                    ->formatStateUsing(function ($record) {
+                        return $record->description_en
+                            ? Str::limit($record->description_en, 100, '...')
+                            : 'No content available';
+                    }),
 
                 Tables\Columns\TextColumn::make('status')
                     ->sortable()
