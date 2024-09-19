@@ -91,7 +91,7 @@ class BlogResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('content')
-                ->html()
+                // ->html()
                 ->markdown(),
 
                 Tables\Columns\TextColumn::make('status')
