@@ -91,8 +91,8 @@ class BlogResource extends Resource
                     ->searchable(),
 
                 TextColumn::make('content')
-                ->html()
-                ->markdown()
+                // ->html()
+                // ->markdown()
                 ->formatStateUsing(fn($record) => \Illuminate\Support\Str::limit($record->description_en, 250, '...') ),
 
                 Tables\Columns\TextColumn::make('status')
