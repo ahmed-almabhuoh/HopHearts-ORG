@@ -265,8 +265,6 @@
             <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
                 <!-- Product 1 -->
-
-
                 @foreach ($projects as $project)
                     <div class="bg-white p-6 rounded-lg shadow-lg">
                         <img class="w-full h-48 object-cover rounded-lg mb-4"
@@ -292,33 +290,38 @@
     <section id="blog" class="py-16 bg-[#F9F3E6]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center">
-                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl"> {{ __('Latest Blog Posts') }} </h2>
+                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl">{{ __('Latest Blog Posts') }}</h2>
                 <p class="mt-4 text-lg text-[#6F4F28]">
                     {{ __('Stay updated with our latest insights, trends, and updates from the tech world. Our blog covers a range of topics to keep you informed and engaged.') }}
                 </p>
             </div>
 
-            @foreach ($blogs as $blog)
-                <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Blog Post 1 -->
-                    <div class="bg-white p-6 rounded-lg shadow-lg">
+            <!-- Blog Posts Grid -->
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($blogs as $blog)
+                    <!-- Blog Post Card -->
+                    <div class="bg-white p-6 rounded-lg shadow-lg flex flex-col">
                         <img class="w-full h-48 object-cover rounded-lg mb-4"
                             src="{{ $blog->image ? Storage::url($blog->image) : 'https://via.placeholder.com/400' }}"
-                            alt="Blog Post 1">
+                            alt="{{ $blog->title }}">
+
                         <h3 class="text-xl font-semibold text-[#8B4000]">
                             {{ $blog->title }}
                         </h3>
-                        <p class="mt-2 text-base text-[#6F4F28]">
+
+                        <p class="mt-2 text-base text-[#6F4F28] line-clamp-4">
                             {!! \Illuminate\Support\Str::limit((new Parsedown())->text($blog->content), 350, '...') !!}
                         </p>
-                        <a href="{{ route('blogs.pages.view', $blog->slug) }}"
-                            class="mt-4 inline-block bg-[#FF6F61] text-white py-2 px-4 rounded-lg font-semibold">
-                            {{ __('Read More') }}
-                        </a>
-                    </div>
-            @endforeach
 
-        </div>
+                        <div class="mt-auto">
+                            <a href="{{ route('blogs.pages.view', $blog->slug) }}"
+                                class="inline-block bg-[#FF6F61] text-white py-2 px-4 rounded-lg font-semibold mt-4">
+                                {{ __('Read More') }}
+                            </a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </section>
 
