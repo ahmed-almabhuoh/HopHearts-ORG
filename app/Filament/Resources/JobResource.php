@@ -67,12 +67,19 @@ class JobResource extends Resource
                             ->rules(['required', 'string']), // Description is required and must be a string
 
                         Select::make('type')
-                            ->options(Job::TYPE)
+                            ->options([
+                                'full-time' => 'full-time',
+                                'part-time' => 'part-time',
+                                'internship' => 'internship'
+                            ])
                             ->required()
                             ->rules(['required']), // Ensure type is selected
 
                         Select::make('status')
-                            ->options(Job::STATUS)
+                            ->options([
+                                'open' => 'Open',
+                                'closed' => 'Closed',
+                            ])
                             ->required()
                             ->rules(['required']), // Ensure status is selected
                     ])
