@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Application;
 use App\Models\Blog;
 use App\Models\BlogComment;
+use App\Models\Job;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use League\CommonMark\CommonMarkConverter;
 
 class WelcomeController extends Controller
@@ -16,10 +19,12 @@ class WelcomeController extends Controller
     {
         $projects = Project::all();
         $blogs = Blog::all();
+        $jobs = Job::where('status', 'open')->get();
 
         return response()->view('welcome', [
             'projects' => $projects,
             'blogs' => $blogs,
+            'jobs' => $jobs,
         ]);
     }
 
@@ -89,7 +94,8 @@ class WelcomeController extends Controller
         return redirect()->route('blogs.pages.view', $blog->slug);
     }
 
-    protected function parseMarkdown($text) {
+    protected function parseMarkdown($text)
+    {
         $replacements = [
             '/\*\*(.*?)\*\*/' => '<strong>$1</strong>',  // Bold
             '/\*(.*?)\*/' => '<em>$1</em>',  // Italic
@@ -108,5 +114,51 @@ class WelcomeController extends Controller
         }
 
         return $text;
+    }
+
+    public function getJobPage(string $slug)
+    {
+        return view('job', [
+            'job' => Job::where([
+                ['status', '=', 'open'],
+                ['slug', '=', $slug],
+            ])->first(),
+        ]);
+    }
+
+    public function jopApplying(Request $request)
+    {
+        // Step 1: Validate the form data
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'resume' => 'required|file|mimes:pdf,doc,docx|max:2048', // limit file size to 2MB
+            'cover_letter' => 'required|string',
+            'job_id' => [
+                'required',
+                'int',
+                Rule::exists('jobs_advertisement', 'id')->where(function ($query) {
+                    $query->where('status', 'open'); // Ensures job status is 'open'
+                })
+            ],
+        ]);
+
+        // Step 2: Handle the resume upload
+        if ($request->hasFile('resume')) {
+            // Store the file in the 'resumes' folder within the 'storage/app/public' directory
+            $resumePath = $request->file('resume')->store('resumes', 'public');
+        }
+
+        // Step 3: Save the data to the applications table
+        $application = new Application();
+        $application->name = $validatedData['name'];
+        $application->email = $validatedData['email'];
+        $application->job_id = $validatedData['job_id'];
+        $application->resume = $resumePath; // store the file path
+        $application->cover_letter = $validatedData['cover_letter'];
+        $application->save();
+
+        // Step 4: Redirect back with a success message
+        return redirect()->back()->with('success', 'Your application has been submitted successfully!');
     }
 }

@@ -58,4 +58,15 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->email == 'hop.hearts@gmail.com';
     }
+
+    // Relations
+    public function jobs(): HasMany
+    {
+        return $this->hasMany(Job::class, 'posted_by', 'id');
+    }
+
+    public function applications(): HasMany
+    {
+        return $this->hasMany(Application::class, 'user_id', 'id');
+    }
 }

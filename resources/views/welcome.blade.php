@@ -251,6 +251,35 @@
         </div>
     </section>
 
+    <section id="Jobs" class="py-16 bg-[#FFE4B5]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-[#8B4000] sm:text-4xl">{{ __('Jobs Advertisements') }}</h2>
+                <p class="mt-4 text-lg text-[#6F4F28]">
+                    {{ __('Explore exciting job opportunities tailored to match your skills and interests.') }}
+                    {{ __('Join us to embark on a rewarding career journey.') }}
+                </p>
+            </div>
+
+            <div class="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                @foreach ($jobs as $job)
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-semibold text-[#8B4000]">{{ $job->title }}</h3>
+
+                        <p class="mt-2 text-base text-[#6F4F28]">
+                            {!! \Illuminate\Support\Str::limit((new Parsedown())->text($job->description), 250, '...') !!}
+                        </p>
+
+                        <a href="{{ route('jobs.show', $job->slug) }}"
+                            class="mt-4 inline-block bg-[#FF6F61] text-white py-2 px-4 rounded-lg font-semibold">
+                            {{ __('Learn More') }}
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
 
     <section id="products" class="py-16 bg-[#FFE4B5]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
