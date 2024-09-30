@@ -70,4 +70,9 @@ class User extends Authenticatable implements FilamentUser
     {
         return $this->hasMany(Application::class, 'user_id', 'id');
     }
+
+    public function report(): HasMany
+    {
+        return $this->hasMany(Report::class, 'user_id', 'id');
+    }
 }

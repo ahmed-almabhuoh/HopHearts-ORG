@@ -9,3 +9,6 @@ Route::get('/jobs/{slug}', [WelcomeController::class, 'getJobPage'])->name('jobs
 Route::post('jobs/apply', [WelcomeController::class, 'jopApplying'])->name('jobs.apply');
 Route::post('/', [WelcomeController::class, 'likeBlog'])->name('blogs.pages.like');
 Route::post('/comment', [WelcomeController::class, 'commentOnBlog'])->name('blogs.pages.comment');
+
+
+require __DIR__ . '/staff.php';
